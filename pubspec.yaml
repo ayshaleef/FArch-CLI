@@ -1,0 +1,19 @@
+name: farch
+description: FArch CLI Tool is a developer-friendly command-line interface (CLI) designed to simplify and streamline the process of creating a clean architecture folder structure for Flutter projects. It saves time and effort for developers by automating repetitive tasks and generating necessary files with ease.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.5.4
+
+# Add regular dependencies here.
+dependencies:
+  args: ^2.6.0 
+  path: ^1.9.1
+
+executables:
+  farch: main
+
+dev_dependencies:
+  lints: ^4.0.0
+
