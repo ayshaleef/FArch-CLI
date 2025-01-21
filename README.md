@@ -42,9 +42,9 @@ farch "FeatureName"
 
 2. Create a feature with specific architecture:
 ```bash
-farch "FeatureName" --mvc    # For MVC architecture
-farch "FeatureName" --mvvm   # For MVVM architecture
-farch "FeatureName" --clean  # For Clean architecture
+farch "FeatureName" -mvc    # For MVC architecture
+farch "FeatureName" -mvvm   # For MVVM architecture
+farch "FeatureName" -clean  # For Clean architecture
 ```
 
 3. List existing features:
