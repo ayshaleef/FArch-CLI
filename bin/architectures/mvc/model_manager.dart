@@ -8,7 +8,8 @@ import '../../json2dart/json_to_dart.dart';
 
 class MVCModelManager implements BaseManager {
   @override
-  Future<void> create(String featureName, String name, [bool useJson2Dart = false]) async {
+  Future<void> create(String featureName, String name,
+      [bool useJson2Dart = false]) async {
     final filePath = Utility.getFilePath(
       featureName,
       'models',
@@ -22,7 +23,7 @@ class MVCModelManager implements BaseManager {
         await _createDefault(name, filePath);
       }
     } catch (e) {
-      Logger.error('Failed to create model: $e');
+      Logger.error('Failed to create model');
       rethrow;
     }
   }
@@ -30,16 +31,24 @@ class MVCModelManager implements BaseManager {
   Future<void> _createFromJson(String name, String filePath) async {
     final jsonToDartConverter = JsonToDartConverter();
     final json = Utility.readFile(filePath);
-    
-    final contentDart = jsonToDartConverter.convert(
-      name, 
-      jsonDecode(json), 
-      ArchitectureType.MVC
-    );
-    
-    Utility.writeFile(filePath, contentDart.model);
+
+    try {
+      final contentDart = jsonToDartConverter.convert(
+          name, jsonDecode(json), ArchitectureType.MVC);
+
+      Utility.writeFile(filePath, contentDart.model);
       await Utility.formatFile(filePath);
-    Logger.success('File "$name" has been successfully converted from JSON to Dart.');
+      Logger.success(
+          'File "$name" has been successfully converted from JSON to Dart.');
+    } catch (e) {
+      if (e is FormatException) {
+        Logger.error(
+            'The input must be in JSON format. Please check your input file.');
+      } else {
+        Logger.error('Failed to convert JSON to Dart');
+      }
+      rethrow;
+    }
   }
 
   Future<void> _createDefault(String name, String filePath) async {
