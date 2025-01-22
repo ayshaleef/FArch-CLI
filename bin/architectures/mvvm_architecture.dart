@@ -67,7 +67,8 @@ class MVVMArchitecture {
     
     switch (option) {
       case '-m':
-        await _modelManager.create(featureName, name);
+         final useJson2Dart = arguments.contains('-j2d');
+        await _modelManager.create(featureName, name , useJson2Dart);
         break;
       case '-vm':
         await _viewModelManager.create(featureName, name);

@@ -1,9 +1,8 @@
-# 🚀 FArch CLI Tool
+# 🚀 FArch CLI Tool ![](https://img.shields.io/badge/build-1.1.0-brightgreen)
 
 FArch CLI Tool is a developer-friendly command-line interface (CLI) designed to simplify and streamline the process of creating feature structures in Flutter projects using different architectural patterns (Clean Architecture, MVC, MVVM). It saves time and effort for developers by automating repetitive tasks and generating necessary files with ease.
 
 ---
-
 
 ## ✨ Features
 
@@ -18,6 +17,49 @@ FArch CLI Tool is a developer-friendly command-line interface (CLI) designed to 
 - **Dependency Injection with GetIt**: Seamlessly integrate the GetIt package for dependency injection (available only for Clean Architecture)
 - **Custom File Generation**: Generate specific files based on provided options
 - **Effortless Setup**: Automatically register dependencies and prepare your project structure
+- **Convert JSON to Dart**: Quickly generate Dart models from JSON
+  - Create a model file: 
+    ```bash
+    farch featureName -m model_name
+    ```
+  - Paste your JSON into the generated model file, e.g.,
+    ```json
+    {
+      "name": "Ayman",
+      "city": "Marib",
+      "hobbies": ["reading", "coding", "traveling"]
+    }
+    ```
+  - Convert JSON to Dart:
+    ```bash
+    farch featureName -m model_name -j2d
+    ```
+  - Example Output:
+    ```dart
+    class ModelName {
+      final String name;
+      final String city;
+      final List<String> hobbies;
+
+      ModelName({
+        required this.name,
+        required this.city,
+        required this.hobbies,
+      });
+
+      factory ModelName.fromJson(Map<String, dynamic> json) => ModelName(
+            name: json["name"] as String,
+            city: json["city"] as String,
+            hobbies: json["hobbies"] as List<String>,
+          );
+
+      Map<String, dynamic> toJson() => {
+            "name": name,
+            "city": city,
+            "hobbies": hobbies,
+          };
+    }
+    ```
 
 ---
 
@@ -182,8 +224,9 @@ Future<void> main() async {
 
 ## 🤝 Contribution
 
-Feel free to contribute by reporting issues or suggesting improvements via [GitHub Issues](#).
+Feel free to contribute by reporting issues or suggesting improvements via [GitHub Issues](https://github.com/ayshaleef/FArch-CLI).
 
 ---
 
 Happy Coding! 🎉
+

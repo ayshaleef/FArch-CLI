@@ -1,4 +1,3 @@
-
 import 'state_management/state_manager.dart';
 import 'mvc/controller_manager.dart';
 import 'mvc/model_manager.dart';
@@ -57,10 +56,12 @@ class MVCArchitecture {
 
     final option = arguments[1];
     final name = arguments[2];
+  
     
     switch (option) {
       case '-m':
-        await _modelManager.create(featureName, name);
+        final useJson2Dart = arguments.contains('-j2d');
+        await _modelManager.create(featureName, name, useJson2Dart);
         break;
 
       case '-v':

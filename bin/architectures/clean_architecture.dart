@@ -67,7 +67,8 @@ class CleanArchitecture {
         await GetItManager.registerUseCase(featureName, name);
         break;
       case '-m':
-        await ModelAndEntityManager().create(featureName, name);
+        final useJson2Dart = arguments.contains('-j2d');
+        await ModelAndEntityManager().create(featureName, name , useJson2Dart);
         break;
       case '-r':
       case '-repository':
