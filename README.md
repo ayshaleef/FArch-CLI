@@ -1,4 +1,4 @@
-# 🚀 FArch CLI Tool ![](https://img.shields.io/badge/build-1.1.0-brightgreen)
+# 🚀 FArch CLI Tool ![](https://img.shields.io/badge/build-1.0.2-brightgreen)
 
 FArch CLI Tool is a developer-friendly command-line interface (CLI) designed to simplify and streamline the process of creating feature structures in Flutter projects using different architectural patterns (Clean Architecture, MVC, MVVM). It saves time and effort for developers by automating repetitive tasks and generating necessary files with ease.
 
