@@ -73,7 +73,7 @@ class MVCArchitecture implements IArchitecture{
     switch (option) {
       case '-m':
         final useJson2Dart = arguments.contains('-j2d');
-        await _modelManager.create(featureName, name, useJson2Dart);
+        await _modelManager.create(featureName, name.replaceAll('_model', ""), useJson2Dart);
         break;
 
       case '-v':

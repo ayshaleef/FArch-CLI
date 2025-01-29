@@ -71,23 +71,23 @@ class CleanArchitecture implements IArchitecture {
     switch (option) {
       case '-usecase':
       case '-u':
-        await UseCaseManager().create(featureName, name);
-        await GetItManager.registerUseCase(featureName, name);
+        await UseCaseManager().create(featureName, name.replaceAll('_usecase', ""));
+        await GetItManager.registerUseCase(featureName, name.replaceAll('_usecase', ""));
         break;
       case '-m':
         final useJson2Dart = arguments.contains('-j2d');
-        await ModelAndEntityManager().create(featureName, name , useJson2Dart);
+        await ModelAndEntityManager().create(featureName, name.replaceAll('_model', "").replaceAll('_entity', "") , useJson2Dart);
         break;
       case '-r':
       case '-repository':
-        await RepositoryManager().create(featureName, name);
-        await GetItManager.registerRepository(featureName, name);
+        await RepositoryManager().create(featureName, name.replaceAll('_repository', ""));
+        await GetItManager.registerRepository(featureName, name.replaceAll('_repository', ""));
 
         break;
       case '-d':
       case '-data':
-        await DataSourceManager().create(featureName, name);
-        await GetItManager.registerDataSource(featureName, name);
+        await DataSourceManager().create(featureName, name.replaceAll('_data_source', ""));
+        await GetItManager.registerDataSource(featureName, name.replaceAll('_data_source', ""));
 
         break;
       default:

@@ -82,7 +82,7 @@ class MVVMArchitecture implements IArchitecture {
     switch (option) {
       case '-m':
          final useJson2Dart = arguments.contains('-j2d');
-        await _modelManager.create(featureName, name , useJson2Dart);
+        await _modelManager.create(featureName, name.replaceAll('_model', "") , useJson2Dart);
         break;
       case '-vm':
         await _viewModelManager.create(featureName, name);
@@ -91,10 +91,10 @@ class MVVMArchitecture implements IArchitecture {
         await _viewManager.create(featureName, name);
         break;
       case '-s':
-        await _serviceManager.create(featureName, name);
+        await _serviceManager.create(featureName, name.replaceAll('_service', ""));
         break;
       case '-r':
-        await _repositoryManager.create(featureName, name);
+        await _repositoryManager.create(featureName, name.replaceAll('_repository', ""));
         break;
       default:
         Logger.error('Invalid MVVM option. Use -m (model), -vm (viewmodel), -v (view), -s (service), or -r (repository).');
