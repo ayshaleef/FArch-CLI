@@ -48,8 +48,11 @@ class CleanArchitecture implements IArchitecture {
       final smName = arguments[smIndex + 1];
       String? smType;
       
-      if (arguments.contains('-bloc')) smType = 'bloc';
-      else if (arguments.contains('-getx')) smType = 'getx';
+      if (arguments.contains('-bloc')) {
+        smType = 'bloc';
+      // ignore: curly_braces_in_flow_control_structures
+      } else if (arguments.contains('-getx')) smType = 'getx';
+      // ignore: curly_braces_in_flow_control_structures
       else if (arguments.contains('-provider')) smType = 'provider';
       
       if (smType == null) {

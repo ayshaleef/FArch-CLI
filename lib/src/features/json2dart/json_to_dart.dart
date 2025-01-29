@@ -196,7 +196,7 @@ class JsonToDartConverter {
         buffer.writeln(
             '    "${key}": $variableName.map((item) => item.toJson()).toList(),');
       } else {
-        buffer.writeln('    "${key}": $variableName,');
+        buffer.writeln('    "$key": $variableName,');
       }
     }
     buffer.writeln('  };\n');
@@ -217,7 +217,7 @@ class JsonToDartConverter {
       }
       return 'List<dynamic>';
     }
-    if (value is Map) return _formatClassName(nestedClassName) + 'Entity';
+    if (value is Map) return '${_formatClassName(nestedClassName)}Entity';
     return 'dynamic';
   }
 

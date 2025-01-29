@@ -77,9 +77,9 @@ class FArch {
     }
 
     print('Available features:');
-    features.forEach((feature) {
+    for (var feature in features) {
       print('\x1B[32m${feature.path.split('/').last}\x1B[0m');
-    });
+    }
   }
 
   Future<void> _createFeatureWithPrompt(String featureName) async {
