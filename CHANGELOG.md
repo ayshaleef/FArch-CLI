@@ -10,3 +10,7 @@
 
 - Added feature to convert JSON to Dart.
 - Improvements and bug fixes.
+
+## 1.0.3
+
+- Improvements and fixes
