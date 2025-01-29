@@ -102,7 +102,7 @@ class JsonToDartConverter {
       final key = entry.key;
       final value = entry.value;
       final variableName = _convertToCamelCase(key);
-      final nestedClassName = _capitalize(key) + 'Model';
+      final nestedClassName = '${_capitalize(key)}Model';
 
       if (value is Map) {
         nestedClasses.writeln(_generateModel(

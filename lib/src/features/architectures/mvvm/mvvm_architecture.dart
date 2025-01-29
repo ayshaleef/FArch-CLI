@@ -55,9 +55,17 @@ class MVVMArchitecture implements IArchitecture {
       final smName = arguments[smIndex + 1];
       String? smType;
       
-      if (arguments.contains('-bloc')) smType = 'bloc';
-      else if (arguments.contains('-getx')) smType = 'getx';
-      else if (arguments.contains('-provider')) smType = 'provider';
+      if (arguments.contains('-bloc'))
+      {
+        smType = 'bloc';
+      }
+      else if (arguments.contains('-getx')){
+        smType = 'getx';
+      }
+      else if (arguments.contains('-provider'))
+      {
+         smType = 'provider';
+      }
       
       if (smType == null) {
         print('Please specify state management type: -bloc, -getx, or -provider');
