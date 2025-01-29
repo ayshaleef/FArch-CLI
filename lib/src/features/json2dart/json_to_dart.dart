@@ -189,12 +189,12 @@ class JsonToDartConverter {
       final variableName = _convertToCamelCase(key);
 
       if (entry.value is Map) {
-        buffer.writeln('    "${key}": $variableName.toJson(),');
+        buffer.writeln('    "$key": $variableName.toJson(),');
       } else if (entry.value is List &&
           entry.value.isNotEmpty &&
           entry.value.first is Map) {
         buffer.writeln(
-            '    "${key}": $variableName.map((item) => item.toJson()).toList(),');
+            '    "$key": $variableName.map((item) => item.toJson()).toList(),');
       } else {
         buffer.writeln('    "$key": $variableName,');
       }
