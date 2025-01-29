@@ -2,6 +2,7 @@ extension StringExtension on String {
   String capitalize() => isNotEmpty ? this[0].toUpperCase() + substring(1) : '';
 }
 
+// ignore: constant_identifier_names
 enum ArchitectureType { MVC, MVVM, CLEAN }
 
 class DartClass {
@@ -162,7 +163,7 @@ class JsonToDartConverter {
     for (var entry in json.entries) {
       final key = entry.key;
       final variableName = _convertToCamelCase(key);
-      final nestedClassName = _capitalize(key) + 'Model';
+      final nestedClassName = '${_capitalize(key)}Model';
 
       if (entry.value is Map) {
         buffer.writeln(

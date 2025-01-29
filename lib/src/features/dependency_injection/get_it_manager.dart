@@ -64,7 +64,7 @@ Future<void> init() async {
         }
 
         if (!mainContent.contains("import 'injection.dart' as injection")) {
-          mainContent = "import 'injection.dart' as injection;\n" + mainContent;
+          mainContent = "import 'injection.dart' as injection;\n$mainContent";
         }
 
         if (!mainContent.contains('await injection.init();')) {
@@ -97,7 +97,7 @@ import 'features/$featureName/data/data_sources/${featureName}_data_source.dart'
 import 'features/$featureName/data/repositories/${featureName}_repository_implement.dart';
 import 'features/$featureName/domain/repositories/${featureName}_repository.dart';
 import 'features/$featureName/domain/usecases/${featureName}_usecase.dart';
-import 'features/$featureName/presentation/manager/bloc/${featureName}/${featureName}_bloc.dart';
+import 'features/$featureName/presentation/manager/bloc/$featureName/${featureName}_bloc.dart';
 ''';
    
 
@@ -107,7 +107,7 @@ import 'features/$featureName/presentation/manager/bloc/${featureName}/${feature
 
     final methodContent = '''
 
-Future<void> _setUp${className}() async {
+Future<void> _setUp$className() async {
    // BLoC
   sl.registerFactory(() => ${className}Bloc());
 
@@ -154,7 +154,7 @@ Future<void> _setUp${className}() async {
         'Bloc',
         (className) => 'sl.registerFactory(() => ${className}Bloc());',
         (featureName) =>
-            "import 'features/$featureName/presentation/manager/bloc/${fileName}/${fileName}_bloc.dart';");
+            "import 'features/$featureName/presentation/manager/bloc/$fileName/${fileName}_bloc.dart';");
   }
 
   static Future<void> registerUseCase(
